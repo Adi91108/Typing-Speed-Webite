@@ -113,7 +113,7 @@ const [wordsArray, setWordsArray] = useState(()=> generate(50));
       }else{
         //remove cursor in b/w the word
         setMissedChars(missedChars + (allCurrChars.length - currCharIndex));
-        allCurrChars[currCharIndex].classList.remove('current-right');
+        allCurrChars[currCharIndex].classList.remove('current');
 
       }
       wordsSpanRef[currWordIndex+1].current.childNodes[0].className = 'current';
