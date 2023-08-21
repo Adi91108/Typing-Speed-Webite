@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { GlobalStyles } from "./styles/global";
+import { ThemeProvider } from "styled-components";
+import { useTheme } from "./context/ThemeContext";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { Routes,Route } from 'react-router-dom';
+import HomePage from "./Pages/HomePage";
+import UserPage from "./Pages/UserPage";
+
 
 function App() {
+  const { theme } = useTheme();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+    <ToastContainer/>
+    <GlobalStyles/>
+    <Routes>
+      <Route path='/' element={<HomePage/>}/>
+      <Route path='/user' element={<UserPage/>}/>
+      </Routes>
+   </ThemeProvider>
   );
 }
-
 export default App;
+
+
+
+//       {/* <div className="canvas">
+//         <Header />
+//         <TypingBox />
+//         <Footer />
+//       </div> 
+//  this all is moved to home page js file in order to give feel of react-routing and multiple pages from canvas
+//       all code is copied and pasted */}
+
+
